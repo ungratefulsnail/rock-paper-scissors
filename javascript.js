@@ -11,6 +11,5 @@ function getComputerChoice() {
   }
 };
 
-alert(getComputerChoice())
 
 
