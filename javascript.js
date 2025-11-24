@@ -1,6 +1,4 @@
-
 /* --- Computer input --- */
-
 function getComputerChoice() {
   let choice = Math.random(); // Math.random() returns values between 0 and 1
   if (choice > 0.7) { // divide in 3 parts and made the conditional statements
@@ -13,56 +11,50 @@ function getComputerChoice() {
 };
 
 /* --- User input --- */
-
 function getHumanChoice () {
-  let choice = prompt("Choose between rock - paper - scissors:"); // User enters the value
+  let choice = prompt("Choose between rock - paper - scissors:");
   return choice;
 };
 
-/* --- Score variables --- */
-
+/* --- Score variables --- */ 
 let humanScore = 0; // set to 0 initially
 let computerScore = 0;
 
+/* Set the variables for playRound function */
 let computerChoice = getComputerChoice();
 let humanChoice = getHumanChoice();
 
-const humanChoiceIns = humanChoice.toLowerCase(); // made humanChoice case-insensitive
+humanChoice = humanChoice.toLowerCase(); // made humanChoice case-insensitive
 
 /* --- Gameplay of a single round --- */
-
-let playRound; // Here I used function expression after trying one day to make it work with function declaration.
-  
-  if (humanChoiceIns === "rock" && computerChoice === "scissors") {
-    playRound = function() {
-      return "You win! rock beats scissors";
-    }
-  } else if (humanChoiceIns === "rock" && computerChoice === "paper") {
-    playRound = function() {
-      return "You lose! Paper beats Rock";
-    }
-  } else if (humanChoiceIns === "paper" && computerChoice === "rock") {
-    playRound = function() {
-      return "You Win! Paper beats Rock";
-     }
-  } else if (humanChoiceIns === "paper" && computerChoice === "scissors") {
-    playRound = function() {
-      return "You lose! Scissors beats Paper";
-     }
-  } else if (humanChoiceIns === "scissors" && computerChoice === "paper") {
-    playRound = function() {
-      return "You Win! Scissors beats Paper";
-     }
-  } else if (humanChoiceIns === "scissors" && computerChoice === "rock") {
-    playRound = function() {
-      return "You lose! Rock beats Scissors";
-     }
-  } else {
-    playRound = function() {
-      return "Tie";
-     }
+function playRound(humanChoice, computerChoice) {
+ if (humanChoice == "rock" && computerChoice == "scissors") {
+    humanScore = ++humanScore;
+   return "You win! rock beats scissors";
+ } else if (humanChoice == "rock" && computerChoice == "paper") {
+    computerScore = ++computerScore;
+   return "You lose! Paper beats Rock";
+ } else if (humanChoice == "paper" && computerChoice == "rock") {
+    humanScore = ++humanScore;
+   return "You Win! Paper beats Rock";
+ } else if (humanChoice == "paper" && computerChoice == "scissors") {
+    computerScore = ++computerScore;
+   return "You lose! Scissors beats Paper";
+ } else if (humanChoice == "scissors" && computerChoice == "paper") {
+    humanScore = ++humanScore;
+   return "You Win! Scissors beats Paper";
+ } else if (humanChoice == "scissors" && computerChoice == "rock") {
+    computerScore = ++computerScore;
+   return "You lose! Rock beats Scissors";
+ } else {
+    humanScore = ++humanScore;
+    computerScore = ++computerScore;
+   return "Tie!";
+ }
 }
 
-console.log("User says " + humanChoiceIns)
+console.log("User says " + humanChoice)
 console.log("Computer says " + computerChoice);
-console.log(playRound());
+console.log(playRound(humanChoice, computerChoice));
+console.log("User Score: " + humanScore);
+console.log("Computer Score: " + computerScore);
