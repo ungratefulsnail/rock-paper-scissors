@@ -30,7 +30,7 @@ function playRound(humanChoice, computerChoice) {
 
 if (humanChoice === "rock" && computerChoice === "scissors") {
    humanScore++;
-   return "You win! rock beats scissors";
+   return "You win! Rock beats Scissors";
  } else if (humanChoice === "rock" && computerChoice === "paper") {
    computerScore++;
    return "You lose! Paper beats Rock";
