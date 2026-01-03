@@ -1,15 +1,12 @@
+const CHOICES = ['rock', 'paper', 'scissors'];
+
 /* --- Computer input --- */
 
+// Returns a random choice from the CHOICES array
 function getComputerChoice() {
-  let choice = Math.random(); // Math.random() returns values between 0 and 1
-  if (choice > 0.7) { // divide in 3 parts and made the conditional statements
-    return "scissors";
-  } else if (choice > 0.3) {
-    return "paper";
-  } else {
-    return "rock";
-  }
-};
+  let randomChoice = Math.floor(Math.random() * CHOICES.length);
+  return CHOICES[randomChoice];
+}
 
 /* --- User input --- */
 
