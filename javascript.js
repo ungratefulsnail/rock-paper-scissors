@@ -13,20 +13,41 @@ function getComputerChoice() {
   return CHOICES[randomChoice];
 }
 
-/* --- Display round result --- */
+/* --- User input --- */
 
-// The user input comes from buttons and shows the result in a new created div
+// Each button triggers a round with the corresponding user choice
 rockBtn.addEventListener('click', () => runEvent('rock'));
 
 paperBtn.addEventListener('click', () => runEvent('paper'));
 
 scissorsBtn.addEventListener('click', () => runEvent('scissors'));
 
+// Runs one round of the game and updates UI and score
 function runEvent(choice) {
+
+// Clear previous game message when a new match starts
+  if (humanScore === 0 && computerScore === 0) {
+    announce.textContent = '';
+  }
+
+// Get computer choice and determine round result
   const computerChoice = getComputerChoice();
   const roundResult = playRound(choice, computerChoice);
   result.textContent = 'You pick ' + choice + ' and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
   score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
+
+// Check for game winner
+  if (humanScore >= 5) {
+    announce.textContent = 'You won the game!!!';
+    humanScore = 0;
+    computerScore = 0;
+  }
+  if (computerScore >= 5) {
+    announce.textContent = 'You lost the game!!!';
+    humanScore = 0;
+    computerScore = 0;
+  }
+
 }
 
 // Round result text
@@ -72,10 +93,14 @@ function playRound(humanChoice, computerChoice) {
 let humanScore = 0;
 let computerScore = 0;
 
-// Score result text
+// Displays current score
 const score = document.createElement('p');
 score.className ='score';
 container.appendChild(score);
 
+// Displays game winner message
+const announce = document.createElement('p');
+  announce.className = 'announce';
+  container.appendChild(announce);
 
 
