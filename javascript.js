@@ -25,16 +25,14 @@ scissorsBtn.addEventListener('click', () => runEvent('scissors'));
 // Runs one round of the game and updates UI and score
 function runEvent(choice) {
 
-// Clear previous game message when a new match starts
-  if (humanScore === 0 && computerScore === 0) {
+  if (humanScore === 0 && computerScore === 0) {  // Clear previous game message when a new match starts
     announce.textContent = '';
   }
-
 // Get computer choice and determine round result
   const computerChoice = getComputerChoice();
   const roundResult = playRound(choice, computerChoice);
   result.textContent = 'You pick ' + choice + ' and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
-  score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
+  score.textContent = 'You: ' + humanScore + '  ---  Computer: ' + computerScore;
 
 // Check for game winner
   if (humanScore >= 5) {
@@ -47,7 +45,6 @@ function runEvent(choice) {
     humanScore = 0;
     computerScore = 0;
   }
-
 }
 
 // Round result text
