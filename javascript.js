@@ -16,26 +16,18 @@ function getComputerChoice() {
 /* --- Display round result --- */
 
 // The user input comes from buttons and shows the result in a new created div
-rockBtn.addEventListener('click', () => {
-    const computerChoice = getComputerChoice(); // prevent multiple random calls
-    const roundResult = playRound('rock', computerChoice);
-    result.textContent = 'You pick rock and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
-    score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
-})
+rockBtn.addEventListener('click', () => runEvent('rock'));
 
-paperBtn.addEventListener('click', () => {
-    const computerChoice = getComputerChoice();
-    const roundResult = playRound('paper', computerChoice);
-    result.textContent = 'You pick paper and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
-    score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
-})
+paperBtn.addEventListener('click', () => runEvent('paper'));
 
-scissorsBtn.addEventListener('click', () => {
-    const computerChoice = getComputerChoice();
-    const roundResult = playRound('scissors', computerChoice);
-    result.textContent = 'You pick scissors and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
-    score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
-})
+scissorsBtn.addEventListener('click', () => runEvent('scissors'));
+
+function runEvent(choice) {
+  const computerChoice = getComputerChoice();
+  const roundResult = playRound(choice, computerChoice);
+  result.textContent = 'You pick ' + choice + ' and Computer says ' + computerChoice + ': ' + getResultText(roundResult);
+  score.textContent = 'You: ' + humanScore + ' - Computer: ' + computerScore;
+}
 
 // Round result text
 const result = document.createElement('div');
